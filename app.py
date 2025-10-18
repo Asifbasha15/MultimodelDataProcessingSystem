@@ -25,7 +25,7 @@ app.config['UPLOAD_FOLDER'] = os.path.join(os.path.abspath(os.path.dirname(__fil
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 
-# ------------------ TEXT EXTRACTION HELPERS ------------------
+
 
 def extract_text_from_image(image_path):
     try:
@@ -97,7 +97,7 @@ def extract_text_from_file(file_path):
         return "Unsupported file type."
 
 
-# ------------------ GEMINI LLM FUNCTION ------------------
+
 
 def query_gemini_llm(prompt):
     print(prompt)
@@ -113,7 +113,7 @@ def query_gemini_llm(prompt):
     return response.text
 
 
-# ------------------ FLASK ROUTES ------------------
+
 
 @app.route('/')
 def index():

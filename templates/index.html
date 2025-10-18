@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><title>Gemini Query App</title></head>
+<body>
+  <h2>Upload File or Ask a Question</h2>
+  <form id="uploadForm" enctype="multipart/form-data">
+    <input type="file" name="file" multiple><br><br>
+    <input type="text" name="query" placeholder="Enter your question" size="60"><br><br>
+    <button type="button" onclick="send()">Submit</button>
+  </form>
+  <pre id="response"></pre>
+
+  <script>
+    async function send(){
+      const form = document.getElementById('uploadForm');
+      const data = new FormData(form);
+      const res = await fetch('/api/ask', { method: 'POST', body: data });
+      const out = await res.json();
+      document.getElementById('response').textContent = out.answer;
+    }
+  </script>
+</body>
+</html>
